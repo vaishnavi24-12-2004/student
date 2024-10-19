@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        /* Set a gradient background */
+        body {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            font-family: Arial, sans-serif;
+            color: white; /* Change text color to white for better contrast */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0;
+        }
+
+        /* Style the form */
+        form {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center; /* Center align text */
+        }
+
+        /* Style for input fields */
+        input[type="text"],
+        input[type="password"] {
+            width: 90%; /* Make inputs wider */
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Style for buttons */
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #0072ff; /* Button color */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Change button color on hover */
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #005bb5; /* Darker shade on hover */
+        }
+    </style>
+    <script>
+        let a = 0;
+
+        function userval() {
+            var u = /^[a-zA-Z\-]+$/;
+            var user = document.getElementById("t1").value;
+            if (user.match(u) == null) {
+                alert("Only alphabets are allowed");
+                document.getElementById("t1").focus();
+                return false;
+            } else {
+                a++;
+                return true;
+            }
+        }
+
+        function pswval() {
+            var pwd = document.getElementById("p1").value;
+            var p = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹])[a-zA-Z0-9~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]{10,16}$/;
+            if (!p.test(pwd)) {
+                alert("Password must contain at least 10 characters with 1 digit, 1 uppercase, and 1 special symbol");
+                document.getElementById("p1").focus();
+                return false;
+            } else {
+                a++;
+                return true;
+            }
+        }
+
+        function display(event) {
+            event.preventDefault();
+            if (a >= 2) {
+                alert("Login successful...");
+                window.location.href = 'index.html';
+            } else {
+                alert("Must enter valid username and password");
+                document.getElementById("t1").focus();
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="login">
+        <h3><u>Login Page</u></h3>
+        Username: <input type="text" id="t1" name="user" onchange="userval()" /><br>
+        Password: <input type="password" id="p1" name="psw" onchange="pswval()" /><br><br>
+        <input type="submit" value="Login" onclick="display(event)" />
+        <input type="reset" value="Reset" />
+    </form>
+</body>
+</html>

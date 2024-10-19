@@ -1,0 +1,20 @@
+.centered-item {
+  display: flex;
+  justify-content: center; /* Centers the entire content */
+  align-items: center; /* Vertically centers the content */
+  position: relative; /* Allows absolute positioning of the icon */
+}
+
+.item-text {
+  margin: 0 auto; /* Ensures the text is centered */
+}
+
+.centered-item i {
+  position: absolute;
+  right: 20px; /* Positions the chevron icon to the right */
+}
+
+.list-group-item {
+  width: 100%;
+  text-align: center; /* Centers text within the list item */
+}
